@@ -1,258 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f9dce5">
-  <title>For My Sweetheart ♡ | Iverson</title>
-  <style>
-    :root {
-      --pink: #f5b8c9;
-      --blush: #fff0f3;
-      --rose: #b85f79;
-      --deep: #824257;
-      --paper: #fffaf7;
-      --ink: #67434c;
-      --line: #e8aab9;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
-      background:
-        radial-gradient(ellipse at 15% 10%, #fff9f5 0, transparent 35%),
-        radial-gradient(ellipse at 90% 35%, #f8cbd8 0, transparent 35%),
-        #fbe5eb;
-    }
-    a { color: inherit; }
-    .topbar {
-      position: sticky; top: 0; z-index: 10;
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 25px;
-      padding: 14px 12px;
-      background: rgba(255, 244, 246, .93);
-      border-bottom: 1px solid #edc4ce;
-      backdrop-filter: blur(8px);
-    }
-    .topbar a {
-      text-decoration: none; font-size: .9rem; color: var(--rose);
-      letter-spacing: .04em;
-    }
-    .topbar a:hover { color: var(--deep); }
-    .hero {
-      min-height: 510px; padding: 70px 20px 65px;
-      display: grid; place-items: center; text-align: center;
-      position: relative; overflow: hidden;
-      background:
-        linear-gradient(120deg, rgba(116,55,74,.48), rgba(198,100,127,.32)),
-        url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1800&q=85") center 48%/cover,
-        #d98ca3;
-      color: #fffaf7;
-    }
-    .hero::before, .hero::after {
-      content: "♡"; position: absolute; color: rgba(255,255,255,.7);
-      font-size: 3rem; transform: rotate(-15deg);
-    }
-    .hero::before { left: 8%; top: 18%; }
-    .hero::after { right: 9%; bottom: 18%; transform: rotate(15deg); }
-    .hero-inner { max-width: 780px; position: relative; z-index: 1; }
-    .eyebrow { letter-spacing: .24em; text-transform: uppercase; font-size: .75rem; }
-    h1 {
-      font-size: clamp(3rem, 9vw, 6.3rem); line-height: .98;
-      font-weight: normal; font-style: italic; margin: 20px 0;
-      text-shadow: 0 3px 18px #70344855;
-    }
-    .hero .names { font-size: clamp(1rem, 3vw, 1.3rem); letter-spacing: .07em; }
-    .hero .date { margin-top: 18px; letter-spacing: .16em; font-size: .9rem; }
-    .hero .tagline { font-size: 1.1rem; font-style: italic; line-height: 1.8; }
-    .pill {
-      display: inline-block; margin-top: 18px; padding: 11px 20px;
-      border: 1px solid #fff8; border-radius: 999px; color: white;
-      text-decoration: none; background: #9f526d70;
-    }
-    .paper {
-      width: min(100% - 28px, 1040px); margin: -22px auto 30px;
-      padding: clamp(24px, 5vw, 55px);
-      position: relative; z-index: 2; background: var(--paper);
-      border: 1px solid #f1cbd4;
-      box-shadow: 0 12px 34px #99566a12;
-      border-radius: 3px 8px 4px 10px;
-    }
-    .paper::before {
-      content: ""; position: absolute; inset: 8px; border: 1px dashed #e9b4c2;
-      pointer-events: none;
-    }
-    .section-title {
-      text-align: center; color: var(--rose); font-size: clamp(1.8rem, 4vw, 2.7rem);
-      font-style: italic; font-weight: normal; margin: 0 0 12px;
-    }
-    .subtitle { text-align: center; margin: 0 auto 30px; line-height: 1.7; }
-    .letter-grid {
-      display: grid; grid-template-columns: 1.3fr .7fr; gap: 35px; align-items: center;
-    }
-    .letter-copy { font-size: 1.05rem; line-height: 1.95; white-space: normal; }
-    .letter-copy p { margin: 0 0 14px; }
-    .signature { color: var(--rose); font-size: 1.4rem; font-style: italic; }
-    .keepsake {
-      padding: 27px 18px; text-align: center; transform: rotate(2deg);
-      background: #ffe8ed; border: 1px solid #efc1cc;
-      box-shadow: 0 7px 14px #8f4d6018;
-    }
-    .keepsake .big { font-size: 3rem; font-style: italic; color: var(--rose); margin: 12px 0; }
-    .keepsake .tiny { font-size: .75rem; letter-spacing: .17em; text-transform: uppercase; }
-    .gallery {
-      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px;
-      margin-top: 28px;
-    }
-    .polaroid {
-      background: white; padding: 10px 10px 18px;
-      box-shadow: 0 5px 18px #6f394514; transform: rotate(var(--tilt, -2deg));
-      border: 1px solid #f1e1e3;
-    }
-    .polaroid:nth-child(2) { --tilt: 2deg; }
-    .polaroid:nth-child(3) { --tilt: -1deg; }
-    .photo {
-      aspect-ratio: 4 / 4.5; display: grid; place-items: center; text-align: center;
-      padding: 12px; color: #a25d73; background:
-        linear-gradient(145deg, #f8cbd8, #fff0f2);
-      overflow: hidden;
-    }
-    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo .placeholder { font-size: .9rem; line-height: 1.7; }
-    .caption { text-align: center; font-style: italic; padding-top: 13px; font-size: .95rem; }
-    .lower-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 30px;
-    }
-    .note {
-      background: #ffe9ee; border: 1px solid #f0c2ce; padding: 25px;
-      transform: rotate(-1deg); line-height: 1.85;
-    }
-    .note:nth-child(2) { transform: rotate(1deg); background: #fff0f1; }
-    .note h3 { color: var(--rose); font-size: 1.6rem; font-style: italic; font-weight: normal; margin: 0 0 10px; }
-    .note ul { padding-left: 20px; }
-    .song-card {
-      text-align: center; padding: 24px; margin-top: 28px;
-      background: #fff0f3; border: 1px solid #efc5d0; border-radius: 8px;
-    }
-    .song-card h3 { margin: 0 0 8px; color: var(--rose); font-size: 1.6rem; font-style: italic; font-weight: normal; }
-    .song-card p { line-height: 1.7; }
-    .song-link {
-      display: inline-block; background: var(--rose); color: white;
-      text-decoration: none; padding: 11px 18px; border-radius: 999px; margin-top: 7px;
-    }
-    .promise { text-align: center; font-style: italic; line-height: 1.9; font-size: 1.1rem; }
-    .closing {
-      text-align: center; padding: 65px 20px 75px; color: #fff9f7;
-      background: linear-gradient(135deg, #bd718a, #e5a5b5 55%, #a85c78);
-    }
-    .closing h2 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: normal; font-style: italic; margin: 0 0 12px; }
-    .closing p { line-height: 1.8; }
-    .footer { text-align: center; padding: 18px; color: #9e5e73; font-size: .8rem; }
-    .tiny-heart { color: #df7695; }
-    @media (max-width: 700px) {
-      .hero { min-height: 460px; }
-      .letter-grid, .lower-grid { grid-template-columns: 1fr; }
-      .keepsake { max-width: 340px; width: 100%; margin: 5px auto; }
-      .gallery { grid-template-columns: 1fr; gap: 18px; max-width: 360px; margin-left: auto; margin-right: auto; }
-      .polaroid { transform: none !important; }
-      .topbar { gap: 8px 15px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f9dfe8">
+<title>For Sweetheart ♡</title>
+<style>
+:root{--rose:#b75d7d;--deep:#783c53;--pink:#f7d5e0;--pale:#fff8fa;--paper:#fffdfc;--text:#694957}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#faeaf0;color:var(--text);font-family:Georgia,"Times New Roman",serif}
+nav{position:sticky;top:0;z-index:4;display:flex;justify-content:center;gap:22px;flex-wrap:wrap;background:#fff8faed;padding:14px;border-bottom:1px solid #eec8d4}
+nav a{color:var(--rose);text-decoration:none;font-size:.95rem}
+.hero{min-height:88vh;display:grid;place-items:center;text-align:center;padding:55px 20px;color:white;background:linear-gradient(#7d3a5680,#7d3a5699),url("photo1.png") center 38%/cover}
+.hero-inner{max-width:750px;text-shadow:0 2px 14px #53263a80}
+.kicker{text-transform:uppercase;letter-spacing:.25em;font-size:.75rem}
+h1{font-size:clamp(3.3rem,10vw,6.6rem);line-height:.98;font-weight:normal;font-style:italic;margin:24px 0}
+.hero .sub{font-size:1.12rem;line-height:1.8}
+.pill{display:inline-block;border:1px solid #ffffffc9;border-radius:99px;padding:12px 20px;color:white;text-decoration:none;margin-top:12px;background:#a9517280}
+.paper{width:min(100% - 28px,1050px);margin:28px auto;background:var(--paper);border:1px solid #edc7d3;outline:1px dashed #e5b5c5;outline-offset:-9px;padding:clamp(25px,5vw,55px);box-shadow:0 12px 35px #7d3a5612}
+h2{color:var(--rose);font-size:clamp(2.1rem,5vw,3.3rem);font-weight:normal;font-style:italic;margin:0 0 15px}
+.center{text-align:center}
+.intro{max-width:650px;margin:0 auto 25px;line-height:1.8}
+.letter-layout{display:grid;grid-template-columns:1.4fr .6fr;gap:28px;align-items:center}
+.letter{line-height:2;font-size:1.04rem}
+.signature{font-size:1.4rem;color:var(--rose);font-style:italic}
+.mini-card{background:#ffedf2;border:1px solid #efc5d2;text-align:center;padding:30px 18px;transform:rotate(2deg)}
+.mini-card .year{font-size:3rem;font-style:italic;color:var(--rose);margin:12px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:30px}
+.polaroid{background:white;padding:10px 10px 18px;box-shadow:0 7px 22px #80465a20;border:1px solid #f1e4e8}
+.polaroid:nth-child(1){transform:rotate(-2deg)}.polaroid:nth-child(2){transform:rotate(2deg)}.polaroid:nth-child(3){transform:rotate(-1deg)}
+.polaroid img{width:100%;height:340px;object-fit:cover;display:block;background:#f7dce5}
+.caption{text-align:center;font-style:italic;padding-top:14px}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:35px}
+.note{padding:24px;background:#ffedf2;border:1px solid #efc5d2;line-height:1.85}
+.note:nth-child(2){background:#fff4f4}
+.note h3,.song h3{color:var(--rose);font-size:1.7rem;font-weight:normal;font-style:italic;margin:0 0 10px}
+.song{text-align:center;margin-top:30px;padding:25px;background:#fff0f4;border:1px solid #edc3cf;line-height:1.8}
+.song a,.surprise-button{display:inline-block;background:var(--rose);color:white;border:0;border-radius:99px;padding:12px 21px;text-decoration:none;font:inherit;cursor:pointer}
+.surprise{display:none;max-width:620px;margin:18px auto 0;padding:22px;background:#fff0f4;border:1px dashed #d99bad;line-height:1.9}
+.surprise.show{display:block}
+.closing{text-align:center;background:linear-gradient(135deg,#a45170,#df9eb3,#a45170);color:white;padding:70px 20px;line-height:1.9}
+.closing h2{color:white;font-size:clamp(2.5rem,7vw,4.5rem)}
+footer{text-align:center;color:#a65f78;padding:20px;font-size:.9rem}
+@media(max-width:720px){.hero{min-height:78vh}.letter-layout,.notes{grid-template-columns:1fr}.mini-card{max-width:300px;margin:auto}.gallery{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}.polaroid:nth-child(n){transform:none}.polaroid img{height:auto;max-height:540px;object-fit:cover}nav{gap:12px}}
+</style>
 </head>
 <body>
-  <nav class="topbar" aria-label="Main navigation">
-    <a href="#home">♡ Home</a><a href="#letter">♡ My Letter</a>
-    <a href="#memories">♡ Memories</a><a href="#song">♡ Our Song</a><a href="#forever">♡ Forever</a>
-  </nav>
-
-  <header class="hero" id="home">
-    <div class="hero-inner">
-      <div class="eyebrow">A little page made with love</div>
-      <h1>Happy<br>Anniversary ♡</h1>
-      <div class="names">Iverson <span class="tiny-heart">♡</span> Sweetheart</div>
-      <div class="date">NOVEMBER 09, 2026</div>
-      <p class="tagline">One year of knowing you,<br>and a heart that keeps choosing you. ♡</p>
-      <a class="pill" href="#letter">Read my letter ↓</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="paper" id="letter">
-      <div class="letter-grid">
-        <div>
-          <h2 class="section-title" style="text-align:left">My Love, ♡</h2>
-          <div class="letter-copy">
-            <p>Happy Anniversary, Sweetheart! 💗</p>
-            <p>First of all, thank you kay naabot ka sa akong life. Wala gyud koy pagmahay nga naabot ka sa akong life. Dili man ni jud atong anniversary sa atong pag-uyab, pero mao ni ang one year na natong pagkaila, ug usa ni sa pinaka-special nga adlaw para natong duha.</p>
-            <p>Love kaayo tika, Sweetheart. I know suko ka nako ron tungod sa last night, and I'm really sorry kaayo, Sweetheart. Shudi na suko-suko ha, love love kaayo tika, my chokoloyloy. 🥹💕</p>
-            <p>Amping diha always, Sweetheart, ha. I love you so much, Sweetheart. Thank you for being part of my life. I hope we keep making beautiful memories together, one day at a time. ♡</p>
-            <p class="signature">Always yours,<br>Iverson ♡</p>
-          </div>
-        </div>
-        <aside class="keepsake">
-          <div style="font-size:1.5rem">♡</div>
-          <div class="tiny">A little reminder</div>
-          <div class="big">1 Year</div>
-          <div>of knowing you</div>
-          <div style="margin-top:18px;color:#b85f79">and more memories to come ♡</div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="paper" id="memories">
-      <h2 class="section-title">Our Little Moments ♡</h2>
-      <p class="subtitle">Every memory with you has a special place in my heart.</p>
-      <div class="gallery">
-        <!-- To add a photo: put your image in the same folder as index.html,
-             then replace the placeholder div with: <img src="photo1.jpg" alt="Our memory"> -->
-        <div class="polaroid">
-          <div class="photo"><div class="placeholder">📷<br>Your favorite photo together<br><small>Replace with photo1.jpg</small></div></div>
-          <div class="caption">My favorite person ♡</div>
-        </div>
-        <div class="polaroid">
-          <div class="photo"><div class="placeholder">🌷<br>A sweet memory<br><small>Replace with photo2.jpg</small></div></div>
-          <div class="caption">You make me smile</div>
-        </div>
-        <div class="polaroid">
-          <div class="photo"><div class="placeholder">💌<br>Another special moment<br><small>Replace with photo3.jpg</small></div></div>
-          <div class="caption">Us, always ♡</div>
-        </div>
-      </div>
-
-      <div class="lower-grid">
-        <div class="note">
-          <h3>Little things I love ♡</h3>
-          <ul>
-            <li>Your sweet and caring heart</li>
-            <li>The way you make my days brighter</li>
-            <li>Our little jokes and kulit moments</li>
-            <li>Simply being you, my Sweetheart</li>
-          </ul>
-        </div>
-        <div class="note">
-          <h3>A tiny promise ♡</h3>
-          <p>I may not be perfect, but I want to keep learning, growing, and loving you better. I want more laughs, more memories, more lambing, and more days with you.</p>
-          <p><strong>Ikaw gihapon, always. ♡</strong></p>
-        </div>
-      </div>
-
-      <div class="song-card" id="song">
-        <h3>Our Song ♡</h3>
-        <p><strong>“Kalapastangan” — Fitterkarma</strong></p>
-        <p>Press below to find and play our song. You can also add an audio file to the website later.</p>
-        <a class="song-link" href="https://www.youtube.com/results?search_query=Kalapastangan+Fitterkarma" target="_blank" rel="noopener noreferrer">Play our song ♫</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="closing" id="forever">
-    <div style="font-size:2rem;margin-bottom:12px">♡ 🌷 ♡</div>
-    <h2>I love you, Sweetheart.</h2>
-    <p>Thank you for coming into my life.<br>More memories, more laughter, more love — together.</p>
-    <p style="font-size:1.4rem">Today, tomorrow, and always. ♡</p>
-    <a class="pill" href="#home">Forever & Always ↑</a>
-  </footer>
-  <div class="footer">Made with love by Iverson for Sweetheart ♡</div>
-</body>
-</html>
+<nav><a href="#home">♡ Home</a><a href="#letter">♡ Letter</a><a href="#memories">♡ Memories</a><a href="#song">♡ Song</a></nav>
+<header class="hero" id="home"><div class="hero-inner">
+<div class="kicker">A little website made with love</div>
+<h1>Happy<br>Anniversary ♡</h1>
+<p style="letter-spacing:.13em">IVERSON　♡　SWEETHEART</p>
+<p class="sub">One year of knowing you, and a lifetime of memories still waiting for us. 🌷</p>
+<p>NOVEMBER 09, 2026</p><a class="pill" href="#letter">Open my love letter ↓</a>
+</div></header>
+<main>
+<section class="paper" id="letter"><div class="letter-layout"><div>
+<h2>My Sweetheart, ♡</h2><div class="letter">
+<p><strong>Happy Anniversary, Sweetheart! 💗</strong></p>
+<p>First of all, thank you kay naabot ka sa akong life. Wala gyud koy pagmahay nga naabot ka sa akong life. Dili man ni jud atong anniversary sa atong pag-uyab, pero mao ni ang one year na natong pagkaila, ug usa ni sa pinaka-special nga adlaw para natong duha.</p>
+<p>Love kaayo tika, Sweetheart. I know suko ka nako ron tungod sa last night. Sorry kaayo, Sweetheart. Shudi na suko-suko ha. Love love kaayo tika, my chokoloyloy. 🥹💕</p>
+<p>Amping diha always, Sweetheart, ha. I love you so much, Sweetheart. Thank you for coming into my life and making it more special. I hope we keep choosing each other and making more beautiful memories together. ♡</p>
+<p class="signature">Always yours,<br>Iverson ♡</p></div></div>
+<aside class="mini-card"><div style="font-size:2rem">♡</div><small>A memory to keep</small><div class="year">1 Year</div><div>of knowing you</div><p>my favorite person, always 🌷</p></aside></div></section>
+<section class="paper" id="memories"><h2 class="center">Our Little Scrapbook ♡</h2><p class="intro center">Three little snapshots of us, and a whole lot of love behind every memory.</p>
+<div class="gallery">
+<div class="polaroid"><img src="photo1.png" alt="Iverson and Sweetheart taking a selfie together"><div class="caption">My favorite person ♡</div></div>
+<div class="polaroid"><img src="photo2.png" alt="A playful close-up memory together"><div class="caption">My happy place 💗</div></div>
+<div class="polaroid"><img src="photo3.png" alt="A cute playful couple memory"><div class="caption">Us, being us ♡</div></div>
+</div>
+<div class="notes"><div class="note"><h3>Little things I love ♡</h3><ul><li>Your smile and sweetness</li><li>Our kulit and silly moments</li><li>The memories we keep making</li><li>Simply being you, my Sweetheart</li></ul></div>
+<div class="note"><h3>A little promise ♡</h3><p>I know I am not perfect, but I want to keep learning how to love you better. More laughter, more lambing, more memories, and more days with you.</p><p><strong>Ikaw gihapon, always. ♡</strong></p></div></div>
+<div class="song" id="song"><h3>Our Song ♡</h3><p><strong>“Kalapastangan” — Fitterkarma</strong></p><p>Press the button to listen on YouTube. ♡</p><a href="https://www.youtube.com/results?search_query=Kalapastangan+Fitterkarma" target="_blank" rel="noopener noreferrer">Play our song ♫</a><p style="font-size:.85rem">Opens YouTube search results.</p></div>
+<div class="center" style="margin-top:32px"><h2>A tiny surprise for you 💌</h2><p class="intro">There's one more little thing I want you to know...</p><button class="surprise-button" onclick="document.getElementById('surprise').classList.toggle('show')">Open your surprise ♡</button><div class="surprise" id="surprise"><p>Sweetheart, bisan naa tay misunderstandings usahay, special kaayo ka nako. Thank you for being part of my life. I want to make you smile, make more memories with you, and keep choosing you every day.</p><p><strong>I love you so much, my chokoloyloy. Amping always, ha. ♡</strong></p><p>— Your Iverson 💗</p></div></div>
+</section></main>
+<section class="closing"><div style="font-size:2rem">♡ 🌷 ♡</div><h2>Ikaw gihapon, Sweetheart.</h2><p>Thank you for coming into my life.<br>More memories, more laughter, and more love — together.</p><p style="font-size:1.2rem">Today, tomorrow, and always. ♡</p><a class="pill" href="#home">Back to the beginning ↑</a></section>
+<footer>Made with all my love by Iverson, just for Sweetheart ♡</footer>
+</body></html>
